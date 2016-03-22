@@ -35,10 +35,10 @@ public class KhemerFontTest {
         try {
             PdfWriter.getInstance(document, new BufferedOutputStream( new FileOutputStream(DEST) ));
             document.open();
-            KhmerLigaturizer kh = new KhmerLigaturizer();
             BaseFont baseFont = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font khemerFont = new Font(baseFont, 14F, Font.NORMAL);
-            String data = readData();
+            KhmerLigaturizer kh = new KhmerLigaturizer();
+            String data = kh.process( readData() );
             document.add(new Paragraph(data, khemerFont));
         } finally {
             document.close();
