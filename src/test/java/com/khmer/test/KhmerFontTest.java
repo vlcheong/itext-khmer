@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class KhemerFontTest {
+public class KhmerFontTest {
 
     private static final String DEST = "khemer.pdf";
 
@@ -36,10 +36,10 @@ public class KhemerFontTest {
             PdfWriter.getInstance(document, new BufferedOutputStream( new FileOutputStream(DEST) ));
             document.open();
             BaseFont baseFont = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            Font khemerFont = new Font(baseFont, 14F, Font.NORMAL);
+            Font khmerFont = new Font(baseFont, 14F, Font.NORMAL);
             KhmerLigaturizer kh = new KhmerLigaturizer();
             String data = kh.process( readData() );
-            document.add(new Paragraph(data, khemerFont));
+            document.add(new Paragraph(data, khmerFont));
         } finally {
             document.close();
         }
@@ -49,7 +49,7 @@ public class KhemerFontTest {
     private String readData() throws IOException {
         try (Reader reader =
                 new InputStreamReader(
-                    KhemerFontTest.class.getResourceAsStream("/hello.txt"),
+                    KhmerFontTest.class.getResourceAsStream("/hello.txt"),
                     Charset.forName("UTF-8"));
              BufferedReader bufReader = new BufferedReader(reader)) {
 
